@@ -5,6 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers';
+
 function DecksScreen() {
 	return (
 		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -25,30 +29,32 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
 	return (
-		<NavigationContainer>
-			<Tab.Navigator
-				screenOptions={({ route }) => ({
-					tabBarIcon: ({ focused, color, size }) => {
-						let iconName;
+		<Provider store={createStore(reducer)}>
+			<NavigationContainer>
+				<Tab.Navigator
+					screenOptions={({ route }) => ({
+						tabBarIcon: ({ focused, color, size }) => {
+							let iconName;
 
-						if (route.name === 'Decks') {
-							iconName = focused ? 'ios-albums' : 'ios-albums-outline';
-						} else if (route.name === 'Add Deck') {
-							iconName = focused ? 'ios-add-circle' : 'ios-add-circle-outline';
+							if (route.name === 'Decks') {
+								iconName = focused ? 'ios-albums' : 'ios-albums-outline';
+							} else if (route.name === 'Add Deck') {
+								iconName = focused ? 'ios-add-circle' : 'ios-add-circle-outline';
+							}
+
+							return <Ionicons name={iconName} size={size} color={color} />;
 						}
-
-						return <Ionicons name={iconName} size={size} color={color} />;
-					}
-				})}
-				tabBarOptions={{
-					activeTintColor: 'tomato',
-					inactiveTintColor: 'gray'
-				}}
-			>
-				<Tab.Screen name="Decks" component={DecksScreen} />
-				<Tab.Screen name="Add Deck" component={NewDeckScreen} />
-			</Tab.Navigator>
-		</NavigationContainer>
+					})}
+					tabBarOptions={{
+						activeTintColor: 'tomato',
+						inactiveTintColor: 'gray'
+					}}
+				>
+					<Tab.Screen name="Decks" component={DecksScreen} />
+					<Tab.Screen name="Add Deck" component={NewDeckScreen} />
+				</Tab.Navigator>
+			</NavigationContainer>
+		</Provider>
 	);
 }
 
