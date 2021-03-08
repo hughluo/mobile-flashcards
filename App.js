@@ -10,6 +10,15 @@ import { Provider } from 'react-redux';
 import reducer from './reducers';
 
 import DeckList from './components/DeckList';
+import AddDeck from './components/AddDeck';
+
+function AppStatusBar() {
+	return (
+		<View style={{ height: 50 }}>
+			<StatusBar translucent />
+		</View>
+	);
+}
 
 function DecksScreen() {
 	return (
@@ -22,7 +31,7 @@ function DecksScreen() {
 function NewDeckScreen() {
 	return (
 		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-			<Text>NewDeckScreen!</Text>
+			<AddDeck />
 		</View>
 	);
 }
@@ -32,7 +41,9 @@ const Tab = createBottomTabNavigator();
 export default function App() {
 	return (
 		<Provider store={createStore(reducer)}>
-			<NavigationContainer>
+			<NavigationContainer style={styles.container}>
+				<AppStatusBar />
+
 				<Tab.Navigator
 					screenOptions={({ route }) => ({
 						tabBarIcon: ({ focused, color, size }) => {
