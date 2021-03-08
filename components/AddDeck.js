@@ -3,16 +3,26 @@ import { connect } from 'react-redux';
 import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 
 import { addDeck } from '../actions';
+
 import AlertModal from './AlertModal';
+import TextButton from './TextButton';
 
 function AddDeck({ decks, dispatch }) {
 	const [ input, setInput ] = React.useState('');
 	const [ modalVisible, setModalVisible ] = React.useState(false);
+	const [ modalMessage, setModalMessage ] = React.useState('');
+
 	const onInputChange = (text) => {
 		setInput(text);
 	};
-	const onDeckCreate = (event) => {
+	const onDeckCreate = () => {
+		if (input === '') {
+			setModalMessage('Deck name cannot be empty!');
+			setModalVisible(true);
+			return;
+		}
 		if (decks[input]) {
+			setModalMessage(`Deck title "${input}" already exist! Pick another one.`);
 			setModalVisible(true);
 			return;
 		}
@@ -31,15 +41,13 @@ function AddDeck({ decks, dispatch }) {
 		<KeyboardAvoidingView style={styles.centeredView}>
 			<AlertModal
 				visible={modalVisible}
-				message={`Deck title "${input}" already exist! Pick another one.`}
+				message={modalMessage}
 				buttonText="Cool"
 				onButtonPress={() => onAlertModalButtonPress()}
 			/>
 			<Text> Create a new Deck by entering the name</Text>
 			<TextInput value={input} style={styles.input} onChangeText={(text) => onInputChange(text)} />
-			<TouchableOpacity style={styles.button} onPress={onDeckCreate}>
-				<Text>Create</Text>
-			</TouchableOpacity>
+			<TextButton text="Create" onPress={() => onDeckCreate()} />
 		</KeyboardAvoidingView>
 	);
 }
