@@ -10,7 +10,7 @@ function entries(state = {}, action) {
 		case ADD_DECK:
 			return {
 				...state,
-				[actions.deck.title]: action.deck
+				[action.deck.title]: action.deck
 			};
 		case ADD_CARD:
 			const deckTitle = action.deckTitle;
