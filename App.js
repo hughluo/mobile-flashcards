@@ -9,10 +9,12 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './reducers';
 
+import DeckList from './components/DeckList';
+
 function DecksScreen() {
 	return (
 		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-			<Text>DecksScreen!</Text>
+			<DeckList />
 		</View>
 	);
 }
