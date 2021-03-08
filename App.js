@@ -22,7 +22,7 @@ function AppStatusBar() {
 
 function DecksScreen() {
 	return (
-		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+		<View style={{ flex: 1 }}>
 			<DeckList />
 		</View>
 	);
@@ -30,7 +30,7 @@ function DecksScreen() {
 
 function NewDeckScreen() {
 	return (
-		<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+		<View style={{ flex: 1 }}>
 			<AddDeck />
 		</View>
 	);
@@ -73,9 +73,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
 	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center'
+		flex: 1
 	}
 });

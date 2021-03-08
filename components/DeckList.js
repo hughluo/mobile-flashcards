@@ -7,24 +7,53 @@ import Deck from './Deck';
 function DeckList({ decks }) {
 	if (Object.keys(decks).length === 0) {
 		return (
-			<View style={styles.noDataText}>
-				<Text>No Deck found. Create Deck first!</Text>
+			<View style={styles.centeredView}>
+				<Text style={styles.noDataText}>No Deck found. Create Deck first!</Text>
 			</View>
 		);
 	}
 	return (
-		<View>
-			<Text> {JSON.stringify(decks)}</Text>
-			{Object.keys(decks).map((title) => <View key={title}>{/* <Deck deck={decks[title]} /> */}</View>)}
+		<View style={styles.container}>
+			{Object.keys(decks).map((title) => (
+				<View key={title} style={styles.item}>
+					<Deck deck={decks[title]} />
+				</View>
+			))}
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
+	centeredView: {
+		flex: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginTop: 22
+	},
+	container: {
+		flex: 1,
+		marginTop: 22
+	},
 	noDataText: {
 		fontSize: 20,
 		paddingTop: 20,
 		paddingBottom: 20
+	},
+	item: {
+		backgroundColor: 'white',
+		borderRadius: 16,
+		padding: 20,
+		marginLeft: 10,
+		marginRight: 10,
+		marginTop: 17,
+		alignContent: 'stretch',
+		shadowRadius: 3,
+		shadowOpacity: 0.8,
+		shadowColor: 'rgba(0, 0, 0, 0.24)',
+		shadowOffset: {
+			width: 0,
+			height: 3
+		}
 	}
 });
 

@@ -45,7 +45,7 @@ function AddDeck({ decks, dispatch }) {
 				buttonText="Cool"
 				onButtonPress={() => onAlertModalButtonPress()}
 			/>
-			<Text> Create a new Deck by entering the name</Text>
+			<Text style={styles.text}> Create a new Deck by entering the name</Text>
 			<TextInput value={input} style={styles.input} onChangeText={(text) => onInputChange(text)} />
 			<TextButton text="Create" onPress={() => onDeckCreate()} />
 		</KeyboardAvoidingView>
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginTop: 22
 	},
-	noDataText: {
+	text: {
 		fontSize: 20,
 		paddingTop: 20,
 		paddingBottom: 20
