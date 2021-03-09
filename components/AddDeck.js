@@ -29,7 +29,7 @@ function AddDeck({ decks, dispatch }) {
 		dispatch(
 			addDeck({
 				title: input,
-				problems: []
+				questions: []
 			})
 		);
 	};
