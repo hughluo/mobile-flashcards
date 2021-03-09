@@ -4,7 +4,7 @@ import { StyleSheet, Text, TextInput, View, KeyboardAvoidingView } from 'react-n
 import { useNavigation } from '@react-navigation/native';
 import { StackActions } from '@react-navigation/native';
 
-import { addCard } from '../actions';
+import { addCard } from '../actions/decks';
 import { sumbitAddCard } from '../utils/api';
 
 import AlertModal from './AlertModal';
@@ -56,7 +56,9 @@ function AddCard({ deckTitle, dispatch }) {
 				<Text style={styles.text}> Enter the answer: </Text>
 				<TextInput value={answerInput} style={styles.input} onChangeText={(text) => setAnswerInput(text)} />
 			</View>
-			<TextButton text="Submit" onPress={() => handleSubmit()} />
+			<View style={styles.buttonGroup}>
+				<TextButton text="Submit" onPress={() => handleSubmit()} />
+			</View>
 		</KeyboardAvoidingView>
 	);
 }
@@ -73,18 +75,24 @@ const styles = StyleSheet.create({
 		paddingTop: 20
 	},
 	input: {
-		width: 200,
+		width: 300,
 		height: 50,
 		padding: 8,
 		borderWidth: 1,
+		borderRadius: 7,
 		borderColor: 'gray',
 		margin: 20
+	},
+	buttonGroup: {
+		alignSelf: 'stretch',
+		padding: 20,
+		margin: 10
 	}
 });
 
-function mapStateToProps(decks, { route }) {
-	const { title } = route.params;
-	return { deckTitle: title };
+function mapStateToProps({ decks }, { route }) {
+	const { deckTitle } = route.params;
+	return { deckTitle };
 }
 
 export default connect(mapStateToProps)(AddCard);
