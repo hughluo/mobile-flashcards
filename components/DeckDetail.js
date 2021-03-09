@@ -40,11 +40,11 @@ const styles = StyleSheet.create({
 	}
 });
 
-function mapStateToProps(state, { route }) {
+function mapStateToProps(decks, { route }) {
 	const { title } = route.params;
 
 	return {
-		deck: state[title]
+		deck: decks[title]
 	};
 }
 
