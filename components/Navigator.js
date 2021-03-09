@@ -6,6 +6,7 @@ import { View } from 'react-native';
 
 import DeckList from './DeckList';
 import AddDeck from './AddDeck';
+import DeckDetail from './DeckDetail';
 
 function DecksScreen() {
 	return (
@@ -33,7 +34,7 @@ function TabNavigator() {
 
 					if (route.name === 'Decks') {
 						iconName = focused ? 'ios-albums' : 'ios-albums-outline';
-					} else if (route.name === 'Add Deck') {
+					} else if (route.name === 'AddDeck') {
 						iconName = focused ? 'ios-add-circle' : 'ios-add-circle-outline';
 					}
 
@@ -46,7 +47,7 @@ function TabNavigator() {
 			}}
 		>
 			<Tab.Screen name="Decks" component={DecksScreen} />
-			<Tab.Screen name="Add Deck" component={NewDeckScreen} />
+			<Tab.Screen name="AddDeck" component={NewDeckScreen} />
 		</Tab.Navigator>
 	);
 }
@@ -57,6 +58,7 @@ function Navigator() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen name="Home" component={TabNavigator} />
+			<Stack.Screen name="DeckDetail" component={DeckDetail} />
 		</Stack.Navigator>
 	);
 }
