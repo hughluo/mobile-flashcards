@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { dummyDecks, FLASHCARDS_STORAGE_KEY } from './_flashcards';
 
-export const getFlashCards = async () => {
+export const getDecks = async () => {
 	try {
 		const value = await AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY);
 		if (value !== null) {
@@ -11,18 +11,22 @@ export const getFlashCards = async () => {
 			return dummyDecks();
 		}
 	} catch (e) {
-		console.log('Error in getFlashCards: ', e);
+		console.log('Error in getDecks: ', e);
 	}
 };
 
-export function createNewDeck(deck) {
-	return AsyncStorage.mergeItem(
-		FLASHCARDS_STORAGE_KEY,
-		JSON.stringify({
-			[deck.title]: deck
-		})
-	);
-}
+export const sumbitAddDeck = async (deck) => {
+	try {
+		await AsyncStorage.mergeItem(
+			FLASHCARDS_STORAGE_KEY,
+			JSON.stringify({
+				[deck.title]: deck
+			})
+		);
+	} catch (e) {
+		console.log('Error in createNewDeck: ', e);
+	}
+};
 
 export function removeEntry(deckTitle) {
 	return AsyncStorage.getItem(FLASHCARDS_STORAGE_KEY).then((results) => {

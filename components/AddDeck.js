@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TextInput, KeyboardAvoidingView } from 'react-native';
 
 import { addDeck } from '../actions';
+import { sumbitAddDeck } from '../utils/api';
 
 import AlertModal from './AlertModal';
 import TextButton from './TextButton';
@@ -26,12 +27,12 @@ function AddDeck({ decks, dispatch }) {
 			setModalVisible(true);
 			return;
 		}
-		dispatch(
-			addDeck({
-				title: input,
-				questions: []
-			})
-		);
+		const deck = {
+			title: input,
+			questions: []
+		};
+		dispatch(addDeck(deck));
+		sumbitAddDeck(deck);
 	};
 	const onAlertModalButtonPress = () => {
 		setModalVisible(!modalVisible);

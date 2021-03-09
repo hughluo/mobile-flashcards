@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { receiveDecks } from '../actions';
-import { getFlashCards } from '../utils/api';
+import { getDecks } from '../utils/api';
 import Deck from './Deck';
 
 function DeckList({ decks, dispatch }) {
 	React.useEffect(() => {
-		getFlashCards().then((decks) => dispatch(receiveDecks(decks)));
+		getDecks().then((decks) => dispatch(receiveDecks(decks)));
 		console.log('DeckList get init data');
 	}, []);
 
