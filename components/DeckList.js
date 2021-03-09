@@ -2,9 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { receiveDecks } from '../actions';
+import { getFlashCards } from '../utils/api';
 import Deck from './Deck';
 
-function DeckList({ decks }) {
+function DeckList({ decks, dispatch }) {
+	React.useEffect(() => {
+		getFlashCards().then((decks) => dispatch(receiveDecks(decks)));
+		console.log('DeckList get init data');
+	}, []);
+
 	if (Object.keys(decks).length === 0) {
 		return (
 			<View style={styles.centeredView}>
