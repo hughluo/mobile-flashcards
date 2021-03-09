@@ -33,6 +33,7 @@ function AddCard({ deckTitle, dispatch }) {
 			answer: answerInput
 		};
 		dispatch(addCard(card, deckTitle));
+		sumbitAddCard(card, deckTitle);
 		const popAction = StackActions.pop(1);
 		navigation.dispatch(popAction);
 	};
