@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { receiveDecks } from '../actions';
+import { receiveDecks } from '../actions/decks';
 import { getDecks } from '../utils/api';
 import Deck from './Deck';
 
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
 	}
 });
 
-function mapStateToProps(decks) {
+function mapStateToProps({ decks }) {
 	return { decks };
 }
 
