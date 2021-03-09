@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { StackActions } from '@react-navigation/native';
 
-import TextButton from './TextButton';
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers';
 import { startQuiz } from '../actions/quiz';
+import TextButton from './TextButton';
 
 function QuizResult({ ready, deckTitle, questionAmount, correctAmount, dispatch }) {
 	if (!ready) {
@@ -16,6 +17,9 @@ function QuizResult({ ready, deckTitle, questionAmount, correctAmount, dispatch 
 		);
 	}
 	const navigation = useNavigation();
+	React.useEffect(() => {
+		clearLocalNotification().then(setLocalNotification);
+	}, []);
 
 	const handleToHome = () => {
 		navigation.navigate('Home');
