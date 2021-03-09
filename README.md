@@ -1,5 +1,5 @@
 # Mobile Flashcards
-A Flashcards Mobile App in [React Native](https://reactnavigation.org/) + [Redux](https://redux.js.org/).
+A Flashcards Mobile App built with [React Native](https://reactnavigation.org/) + [Redux](https://redux.js.org/).
 
 Tested in iPhone 11, iOS 14.4
 
