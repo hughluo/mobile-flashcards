@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { receiveDecks } from '../actions';
 import { getDecks } from '../utils/api';
 import Deck from './Deck';
 
 function DeckList({ decks, dispatch }) {
+	const navigation = useNavigation();
+
 	React.useEffect(() => {
 		getDecks().then((decks) => dispatch(receiveDecks(decks)));
 		console.log('DeckList get init data');
@@ -23,7 +26,9 @@ function DeckList({ decks, dispatch }) {
 		<View style={styles.container}>
 			{Object.keys(decks).map((title) => (
 				<View key={title} style={styles.item}>
-					<Deck deck={decks[title]} />
+					<Pressable onPress={() => navigation.navigate('DeckDetail', { title })}>
+						<Deck deck={decks[title]} />
+					</Pressable>
 				</View>
 			))}
 		</View>
