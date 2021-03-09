@@ -1,9 +1,17 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
-function TextButton({ text, onPress }) {
+function TextButton({ text, onPress, buttonColor = 'tomato' }) {
 	return (
-		<Pressable style={styles.button} onPress={onPress}>
+		<Pressable
+			style={[
+				styles.button,
+				{
+					backgroundColor: buttonColor
+				}
+			]}
+			onPress={onPress}
+		>
 			<Text style={styles.textStyle}>{text}</Text>
 		</Pressable>
 	);
@@ -14,8 +22,7 @@ const styles = StyleSheet.create({
 		borderRadius: 20,
 		padding: 10,
 		margin: 5,
-		elevation: 2,
-		backgroundColor: 'tomato'
+		elevation: 2
 	},
 	textStyle: {
 		color: 'white',
