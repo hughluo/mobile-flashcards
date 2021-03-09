@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, TextInput, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, TextInput, KeyboardAvoidingView, View } from 'react-native';
 
-import { addDeck } from '../actions';
+import { addDeck } from '../actions/decks';
 import { sumbitAddDeck } from '../utils/api';
 
 import AlertModal from './AlertModal';
@@ -46,9 +46,11 @@ function AddDeck({ decks, dispatch }) {
 				buttonText="Cool"
 				onButtonPress={() => onAlertModalButtonPress()}
 			/>
-			<Text style={styles.text}> Create a new Deck by entering the name</Text>
+			<Text style={styles.text}> Give your new deck a name:</Text>
 			<TextInput value={input} style={styles.input} onChangeText={(text) => onInputChange(text)} />
-			<TextButton text="Create" onPress={() => onDeckCreate()} />
+			<View style={styles.buttonGroup}>
+				<TextButton text="Create" onPress={() => onDeckCreate()} />
+			</View>
 		</KeyboardAvoidingView>
 	);
 }
@@ -66,16 +68,22 @@ const styles = StyleSheet.create({
 		paddingBottom: 20
 	},
 	input: {
-		width: 200,
+		width: 100,
 		height: 50,
 		padding: 8,
 		borderWidth: 1,
+		borderRadius: 7,
 		borderColor: 'gray',
-		margin: 50
+		margin: 20
+	},
+	buttonGroup: {
+		alignSelf: 'stretch',
+		padding: 20,
+		margin: 10
 	}
 });
 
-function mapStateToProps(decks) {
+function mapStateToProps({ decks }) {
 	return { decks };
 }
 
