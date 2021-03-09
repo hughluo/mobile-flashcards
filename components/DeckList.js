@@ -26,7 +26,7 @@ function DeckList({ decks, dispatch }) {
 		<View style={styles.container}>
 			{Object.keys(decks).map((title) => (
 				<View key={title} style={styles.item}>
-					<Pressable onPress={() => navigation.navigate('DeckDetail', { title })}>
+					<Pressable onPress={() => navigation.navigate('Deck Detail', { title })}>
 						<Deck deck={decks[title]} />
 					</Pressable>
 				</View>

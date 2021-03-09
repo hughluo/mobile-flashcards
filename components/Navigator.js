@@ -34,7 +34,7 @@ function TabNavigator() {
 
 					if (route.name === 'Decks') {
 						iconName = focused ? 'ios-albums' : 'ios-albums-outline';
-					} else if (route.name === 'AddDeck') {
+					} else if (route.name === 'Add Deck') {
 						iconName = focused ? 'ios-add-circle' : 'ios-add-circle-outline';
 					}
 
@@ -47,7 +47,7 @@ function TabNavigator() {
 			}}
 		>
 			<Tab.Screen name="Decks" component={DecksScreen} />
-			<Tab.Screen name="AddDeck" component={NewDeckScreen} />
+			<Tab.Screen name="Add Deck" component={NewDeckScreen} />
 		</Tab.Navigator>
 	);
 }
@@ -58,7 +58,7 @@ function Navigator() {
 	return (
 		<Stack.Navigator>
 			<Stack.Screen name="Home" component={TabNavigator} />
-			<Stack.Screen name="DeckDetail" component={DeckDetail} />
+			<Stack.Screen name="Deck Detail" component={DeckDetail} />
 		</Stack.Navigator>
 	);
 }
