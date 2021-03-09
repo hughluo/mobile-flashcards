@@ -4,8 +4,8 @@ A Flashcards Mobile App in [React Native](https://reactnavigation.org/) + [Redux
 Tested in iPhone 11, iOS 14.4
 
 ## Functions
-* Add a Deck of Flashcards
-* Add a Flashcard to given Deck
-* Take Quiz on given Deck
+* Add a deck of flashcards
+* Add a flashcard to given deck
+* Take quiz on given deck
+* Notification to remind user of taking quiz
 * Decks are persistent via [Async Storage](https://react-native-async-storage.github.io/async-storage/)
-* Notification for Take Quiz
