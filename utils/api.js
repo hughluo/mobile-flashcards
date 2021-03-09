@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { dummyDecks, FLASHCARDS_STORAGE_KEY } from './_flashcards';
+import { FLASHCARDS_STORAGE_KEY } from './_flashcards';
 
 export const getDecks = async () => {
 	try {
@@ -8,7 +8,7 @@ export const getDecks = async () => {
 		if (value !== null) {
 			return JSON.parse(value);
 		} else {
-			return dummyDecks();
+			return null;
 		}
 	} catch (e) {
 		console.log('Error in getDecks: ', e);
@@ -24,7 +24,22 @@ export const sumbitAddDeck = async (deck) => {
 			})
 		);
 	} catch (e) {
-		console.log('Error in createNewDeck: ', e);
+		console.log('Error in sumbitAddDeck: ', e);
+	}
+};
+
+export const sumbitAddCard = async (card, deckTitle) => {
+	try {
+		await AsyncStorage.mergeItem(
+			FLASHCARDS_STORAGE_KEY,
+			JSON.stringify({
+				[deckTitle]: {
+					questions: [ card ]
+				}
+			})
+		);
+	} catch (e) {
+		console.log('Error in sumbitAddCard: ', e);
 	}
 };
 
