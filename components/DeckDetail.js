@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 import TextButton from './TextButton';
 
 function DeckDetail({ deck }) {
+	const navigation = useNavigation();
+
 	const handleAddCard = () => {
 		console.log('Add Card Pressed!');
+		navigation.navigate('Add Card', { title: deck.title });
 	};
 	const handleStartQuiz = () => {
 		console.log('Start Quiz Pressed!');

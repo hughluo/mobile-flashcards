@@ -7,6 +7,7 @@ import { View } from 'react-native';
 import DeckList from './DeckList';
 import AddDeck from './AddDeck';
 import DeckDetail from './DeckDetail';
+import AddCard from './AddCard';
 
 function DecksScreen() {
 	return (
@@ -59,6 +60,7 @@ function Navigator() {
 		<Stack.Navigator>
 			<Stack.Screen name="Home" component={TabNavigator} />
 			<Stack.Screen name="Deck Detail" component={DeckDetail} />
+			<Stack.Screen name="Add Card" component={AddCard} />
 		</Stack.Navigator>
 	);
 }
