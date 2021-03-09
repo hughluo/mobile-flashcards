@@ -8,6 +8,8 @@ import DeckList from './DeckList';
 import AddDeck from './AddDeck';
 import DeckDetail from './DeckDetail';
 import AddCard from './AddCard';
+import Quiz from './Quiz';
+import QuizResult from './QuizResult';
 
 function DecksScreen() {
 	return (
@@ -61,6 +63,8 @@ function Navigator() {
 			<Stack.Screen name="Home" component={TabNavigator} />
 			<Stack.Screen name="Deck Detail" component={DeckDetail} />
 			<Stack.Screen name="Add Card" component={AddCard} />
+			<Stack.Screen name="Quiz" component={Quiz} />
+			<Stack.Screen name="Quiz Result" component={QuizResult} />
 		</Stack.Navigator>
 	);
 }
